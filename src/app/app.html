@@ -1,0 +1,61 @@
+
+<ion-nav #myC [root]="rootPage" ></ion-nav>
+
+<ion-menu type="overlay" [content]="myC" swipeEnabled="false" #ionMenu (ionClose)="menuClose()">
+	<ion-content>
+    <div class="slide_header">
+      <ion-row>
+          <ion-col>
+            <img class="slide_top_icon" src="https://imgsa.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=630e06da4c086e067ea5371963611091/8435e5dde71190efad510834ce1b9d16fcfa60b7.jpg">
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col class="slide_bottom_content">
+            <div class="slide_bottom_title">朱子豪</div>
+          </ion-col>
+      </ion-row>
+    </div>
+    <ion-list class="slide_list">
+      <ion-item *ngFor="let one of sileData" (click)="slideClick(one)">
+        <ion-icon item-left name="{{one.icon}}"></ion-icon>
+        {{one.title}}
+        <ion-badge item-right *ngIf="one.badge>=1">{{one.badge}}</ion-badge>
+      </ion-item>
+    </ion-list>
+	</ion-content>
+</ion-menu>
+
+
+<style>
+  .slide_header{
+    height: 100px;
+  }
+  .slide_header ion-col,ion-row{
+    padding: 0px;
+    margin: 0px;
+    height:100%;
+  }
+  .slide_header ion-row:first-of-type{
+    height: 60%;
+  }
+  .slide_header ion-row:last-of-type{
+    height: 40%;
+  }
+  .slide_header .slide_top_icon{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 20px;
+    bottom: 10px;
+    left:10px;
+  }
+  .slide_header .slide_bottom_content{
+    display: table;
+  }
+  .slide_header .slide_bottom_title{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 40px;
+    font-size: 1.5em;
+  }
+</style>

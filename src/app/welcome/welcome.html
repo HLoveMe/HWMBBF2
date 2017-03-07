@@ -1,0 +1,16 @@
+<ion-header no-border="">
+  <ion-buttons right>
+    <a ion-button="" clear (click)="goApp()">Skip</a>
+  </ion-buttons>
+</ion-header>
+<ion-content>
+  <ion-slides >
+    <ion-slide *ngFor="let one of sliders">
+      <img [src]="one.image">
+      <p [innerHTML]="one.description"></p>
+    </ion-slide>
+    <ion-slide >
+      <a ion-button (click)="goApp()">GO</a>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

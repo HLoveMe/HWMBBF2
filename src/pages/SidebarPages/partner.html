@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>合作伙伴</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list class="list_content">
+    <div *ngFor="let oneG of partners" class="list_group">
+        <ion-item-divider>{{oneG.name}}</ion-item-divider>
+        <div *ngFor="let one of oneG.data" class="list_item_content">
+          <img src="{{one.image}}">
+        </div>
+    </div>
+  </ion-list>
+</ion-content>
+
+<style>
+  .list_content{
+
+  }
+  .list_content .list_group{
+
+  }
+  .list_content .list_item_content{
+    width: 33.3333333%;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+  }
+  .list_content .list_item_content img{
+    width: 100%;
+    height: 44px
+  }
+</style>

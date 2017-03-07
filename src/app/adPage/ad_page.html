@@ -1,0 +1,17 @@
+
+<ion-content (click)="goDetail()">
+	<span ion-button small class="show_time" (click)="getTas($event)">跳过广告:{{time}}s</span>
+  <div [ngSwitch]="ad?.type" class="full_screent">
+      <div *ngSwitchCase="1" class="full_screent">
+        <img class="full_screent" [src]="ad?.path">
+      </div>
+      <div *ngSwitchCase="2" class="full_screent">
+        video
+      </div>
+  </div>
+</ion-content>
+<ion-footer *ngIf="ad?.title.length>=1">
+  <ion-toolbar  color="secondary">
+    {{ad.title}}
+  </ion-toolbar>
+</ion-footer>

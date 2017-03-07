@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            问卷详情
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="top_image"></div>
+    <ion-list class="list_content">
+        <ion-item-divider text-wrap="">{{questionT?.name}}</ion-item-divider>
+        <!--单选-->
+        <div *ngFor="let one of question?.radio">
+            <p class="question_title">{{one?.title}}</p>
+            <div *ngFor="let ans of one?.quesions;let i=index" (click)="answerClick(one,1,i)">
+                <ion-row class="list_item_radio_answer" center>
+                    <ion-col width-10="" [ngSwitch]="one.select">
+                        <img *ngSwitchCase="i" src="./assets/images/select.png" class="left_icon">
+                        <img *ngSwitchDefault="" src="./assets/images/nor_select.png" class="left_icon">
+                    </ion-col>
+                    <ion-col width-90="">
+                        {{ans}}
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+        <!--多选-->
+        <div *ngFor="let one of question?.checks">
+            <p class="question_title">{{one.title}}</p>
+            <div *ngFor="let ans of one.questions;let i=index" (click)="answerClick(one,2,i)">
+                <ion-row class="list_item_ckecks_answer" center>
+                    <ion-col width-10="" [ngSwitch]="checksSelect(one,i)">
+                        <img *ngSwitchCase="true" src="./assets/images/select.png" class="left_icon">
+                        <img *ngSwitchDefault="" src="./assets/images/nor_select.png" class="left_icon">
+                    </ion-col>
+                    <ion-col width-90="">
+                        <div class="">{{ans}}</div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+        <!--解答题-->
+        <div *ngFor="let one of question?.sketch">
+            <p class="question_title">{{one.title}}</p>
+            <div class="sketch_content" #result contenteditable="true" (input)="sketchEvent(result.innerText,one)" [innerText]="one.content">
+
+            </div>
+        </div>
+        <div class="form_content">
+            <form #thisF="ngForm" (ngSubmit)="formSubmit()">
+                <div class="name_content">
+                    <input type="text" #nameinput="ngModel" name="_name" required [(ngModel)]="user.name" placeholder="姓名">
+                    <div *ngIf="!nameinput.valid" class="err_msg">
+                        必须输入名称
+                    </div>
+                </div>
+                <div class="email_content">
+                    <input type="email" name="email" required [(ngModel)]="user.email" #emailinput="ngModel" placeholder="Email">
+                    <div *ngIf="!emailinput.valid" class="err_msg">
+                        必须输入Email
+                    </div>
+                </div>
+                <div class="submit_content">
+                    <button ion-button round type="submit" [disabled]="!thisF.valid">提交</button>
+                </div>
+            </form>
+        </div>
+    </ion-list>
+</ion-content>

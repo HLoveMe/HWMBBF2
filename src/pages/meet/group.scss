@@ -1,0 +1,13 @@
+.form_content {
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
+  margin: 20px;
+  padding:5px;
+  padding-bottom: 0px;
+  .one_item{
+    width: 100%;
+    .age_input{
+      width: 50px;
+    }
+  }
+}

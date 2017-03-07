@@ -1,0 +1,84 @@
+
+<ion-header >
+  <ion-navbar color="nav_bg">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+        {{ 'HOME.TITLE'|translate }}
+    </ion-title>
+    <ion-buttons right>
+      <a ion-button padding (click)="switchLan()" >
+        <ion-icon name="md-refresh"></ion-icon>
+      </a>
+      <a ion-button padding>
+        <ion-icon name="search"></ion-icon>
+      </a>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+<ion-content class="homeContent">
+  <div class="home_content_top">
+    <ion-slides #sliders loop="true"  zoom="false" speed="300" (ionSlideTap)="slideTap()" (ionSlideAutoplayStop)="adsStop()">
+      <ion-slide *ngFor="let one of ads">
+        <img [src]="one?.imgSrc"/>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div  class="home_content_center">
+      <ion-row >
+        <ion-col width-25="">
+          <ion-row>
+            <ion-col width-75="" class="one_part_left">
+              <div class="one_part_left_content" >{{'HOME.NEWS'|translate}}</div>
+            </ion-col>
+            <ion-col width-25="" style="background-color: #2aa198" class="one_part_right">
+              <ion-icon class="one_part_right_icon" name="menu"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col width-75="" style="background-color: #0c60ee" >
+        </ion-col>
+      </ion-row>
+  </div>
+  <div class="home_content_bottom">
+    <ion-row  >
+      <ion-col width-50="" >
+        <ion-row class="one_module" (click)="selectModule(0)">
+
+          <ion-col >
+            <ion-row style="height: 50%">
+              <ion-col >
+              </ion-col>
+              <ion-col class="one_module_content_icon">
+                <div></div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="height: 50%" class="one_module_content_title">
+              {{"HOME.MODULE0" | translate}}
+              <div></div>
+            </ion-row>
+          </ion-col>
+
+        </ion-row>
+        <ion-row class="one_module" style="background-color: #FF00FF" (click)="selectModule(2)">
+
+        </ion-row>
+      </ion-col>
+      <ion-col width-50="">
+        <ion-row class="one_module" style="background-color:#2aa198" (click)="selectModule(1)">
+
+        </ion-row>
+        <ion-row class="one_module" style="background-color:#3AC8D7" (click)="selectModule(3)">
+
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+
+

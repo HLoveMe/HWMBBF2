@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      嘉宾演讲
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list class="speaker_list" [virtualScroll]="datas">
+    <div *virtualItem="let one;let itemb=bounds" class="speaker_list_item"  >
+      <ion-row>
+        <ion-col width-20="">
+          <img src="{{one.icon}}" class="speaker_icon"/>
+        </ion-col>
+        <ion-col class="speaker_item_right">
+          <p>{{one.name}}</p>
+          <p>{{one.position}}</p>
+        </ion-col>
+      </ion-row>
+      <div class="speaker_line"></div>
+    </div>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMoreSpeakers($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data.">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<style>
+  .speaker_list{
+
+  }
+  .speaker_list_item{
+    width: 100%;
+  }
+  .speaker_list_item ion-row,ion-col{
+    padding: 0px;
+    margin: 0px;
+  }
+  .speaker_list_item ion-row:nth-of-type(1){
+    width: 100%;
+    height:100%;
+  }
+  .speaker_item_right p:nth-of-type(1){
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+  .speaker_item_right p:nth-of-type(2){
+    padding:10px 20px;
+  }
+  .speaker_list_item .speaker_line{
+    width: 100%;
+    height: 1px;
+    margin-left: 20px;
+    background-color: #666666;
+  }
+  .speaker_list .speaker_icon{
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  .speaker_list img{
+    border-radius:30px;
+  }
+</style>

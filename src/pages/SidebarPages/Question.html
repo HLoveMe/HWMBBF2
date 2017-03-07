@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>问卷</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="top_image"></div>
+    <ion-list class="list_content">
+        <ion-item-divider>{{questions.title}}</ion-item-divider>
+        <div ion-item *ngFor="let one of questions.data" class="list_item" (click)="questionClick(one)">
+            <p>{{one.id}}</p>
+            <p text-wrap="">{{one.name}}</p>
+        </div>
+    </ion-list>
+</ion-content>
+
+<style>
+    .top_image {
+        height: 35%;
+        background-image: url("http://pic.58pic.com/58pic/11/79/85/13t58PICsap.jpg");
+    }
+    
+    .list_content .list_item {
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .list_content .list_item p {
+        white-space: normal;
+        padding-top: 4px;
+        padding-left: 10px;
+    }
+</style>
